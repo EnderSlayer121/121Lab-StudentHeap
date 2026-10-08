@@ -1,6 +1,6 @@
 # 121Lab-StudentHeap
 
-##UML
+## UML
 ```mermaid
 classDiagram
     class Student{
