@@ -18,6 +18,6 @@ void Address::init(std::string street, std::string city, std::string state, std:
 
 void Address::printAddress(){
   std::cout << street << std::endl;
-  std::cout << city << " " << state << ", ";
+  std::cout << city << ", " << state << ", ";
   std::cout << zip << std::endl;
 }// end printAddress
