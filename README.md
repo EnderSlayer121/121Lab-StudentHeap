@@ -15,13 +15,10 @@ classDiagram
         + ~Student()
         + void init(studentString)
         + void printStudent()
-        + void setFirst(firstName)
-        + void setLast(lastName)
-        + void getLastFirst()
-        + void setCredits(creditHours)
-        + void setAddress(address)
-        + void setDob(dob)
-        + void setGrad(expectedGrad)
+        + string getLastFirst()
+        + string getLast()
+        + string getFirst()
+        + int getCreditHours()
     }
     class Address{
         # string street
@@ -97,6 +94,9 @@ delete Address* address
 ## Student::init(studentString)
 ```
 set Student::studentString to studentString
+set strings through ss
+set dob, expectedGrad, and address
+convert creditHours to int
 ```
 
 ## Student::printStudent()
@@ -104,19 +104,9 @@ set Student::studentString to studentString
 print all student info (first and last name, dob, etc.)
 ```
 
-## Student::setFirst(firstName)
-```
-set Student::firstName to firstName
-```
-
-## Student::setLast(lastName)
-```
-set Student::lastName to lastName
-```
-
 ## Student::getLastFirst()
 ```
-print lastName, firstName
+return lastName firstName
 ```
 
 ## Student::setCredits(creditHours)
@@ -124,17 +114,17 @@ print lastName, firstName
 set Student::creditHours to creditHours
 ```
 
-## Student::setAddress(address)
+## Student::getLastName
 ```
-set Address* address to adress
-```
-
-## Student::setDob(dob)
-```
-set Date* dob to dob
+return lastName
 ```
 
-## Student::setGrad(expectedGrad)
+## Student::getFirstName
 ```
-set Date* expectedGrad to expectedGrad
+return firstName
+```
+
+## Student::getCreditHours
+```
+return creditHours
 ```
