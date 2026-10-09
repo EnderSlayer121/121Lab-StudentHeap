@@ -13,6 +13,6 @@ class Date{
     Date();
     void init(std::string dateString);
     void printDate();
-}//end Date
+};//end Date
 
 #endif
