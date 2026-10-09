@@ -39,7 +39,6 @@ classDiagram
         # int year
         Date()
         void init(dateString)
-        void convertDate()
         void printDate()
     }
 ```
