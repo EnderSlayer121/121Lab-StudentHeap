@@ -128,3 +128,62 @@ return firstName
 ```
 return creditHours
 ```
+
+# main functions
+
+## int main()
+```
+pre-define main classes
+create a vector of Student pointers called students
+call loadStudents to load the vector from the file
+
+set keepGoing to true
+while keepGoing:
+  call menu function to get string response
+  if response is "0":
+    go to delStudents - ref to students
+    set keepGoing to false
+  if response is "1":
+    go to allStudentNames - ref to students
+  if response is "2"
+    go to printStudents - ref to students
+  if response is "3":
+    go to findStudent - ref to students
+  if any other number:
+    prompt user to try again with a number between 0-3
+```
+
+## std::string menu()
+```
+create a string variable named userChoice
+prompt user to choose whether to quit (0), print all student names (1), print all student data (2),
+or find a student (3)
+record user's input into userChoice
+return userChoice
+```
+
+## void loadStudents(std::vector<Student*>&)
+```
+open students.csv
+
+```
+
+## void printStudents(std::vector<Student*>&)
+```
+
+```
+
+## void allStudentNames(std::vector<Student*>&)
+```
+
+```
+
+## void findStudent(std::vector<Student*>&)
+```
+
+```
+
+## void delStudents(std::vector<Student*>&)
+```
+
+```
