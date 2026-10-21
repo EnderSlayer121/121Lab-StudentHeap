@@ -164,8 +164,13 @@ return userChoice
 
 ## void loadStudents(std::vector<Student*>&)
 ```
-open students.csv
+create ifstream
+create stringstream named ss
+create a string for currentLine
+open students.csv to read line into currentLine
 
+while lines can still be read into currentLine
+  new Student()
 ```
 
 ## void printStudents(std::vector<Student*>&)
