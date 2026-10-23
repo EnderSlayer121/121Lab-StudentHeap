@@ -7,21 +7,18 @@ classDiagram
         # string studentString
         # string lastName
         # string firstName
-        # Date* dob
-        # Date* expectedGrad
-        # Address* address
+        # Date* dob on heap
+        # Date* expectedGrad on heap
+        # Address* address on heap
         # int creditHours
         + Student()
         + ~Student()
         + void init(studentString)
         + void printStudent()
-        + void setFirst(firstName)
-        + void setLast(lastName)
-        + void getLastFirst()
-        + void setCredits(creditHours)
-        + void setAddress(address)
-        + void setDob(dob)
-        + void setGrad(expectedGrad)
+        + string getLastFirst()
+        + string getLast()
+        + string getFirst()
+        + int getCreditHours()
     }
     class Address{
         # string street
@@ -97,6 +94,9 @@ delete Address* address
 ## Student::init(studentString)
 ```
 set Student::studentString to studentString
+set strings through ss
+set dob, expectedGrad, and address
+convert creditHours to int
 ```
 
 ## Student::printStudent()
@@ -104,19 +104,9 @@ set Student::studentString to studentString
 print all student info (first and last name, dob, etc.)
 ```
 
-## Student::setFirst(firstName)
-```
-set Student::firstName to firstName
-```
-
-## Student::setLast(lastName)
-```
-set Student::lastName to lastName
-```
-
 ## Student::getLastFirst()
 ```
-print lastName, firstName
+return lastName firstName
 ```
 
 ## Student::setCredits(creditHours)
@@ -124,17 +114,96 @@ print lastName, firstName
 set Student::creditHours to creditHours
 ```
 
-## Student::setAddress(address)
+## Student::getLastName
 ```
-set Address* address to adress
-```
-
-## Student::setDob(dob)
-```
-set Date* dob to dob
+return lastName
 ```
 
-## Student::setGrad(expectedGrad)
+## Student::getFirstName
 ```
-set Date* expectedGrad to expectedGrad
+return firstName
+```
+
+## Student::getCreditHours
+```
+return creditHours
+```
+
+# main functions
+
+## int main()
+```
+pre-define main classes
+create a vector of Student pointers called students
+call loadStudents to load the vector from the file
+
+set keepGoing to true
+while keepGoing:
+  call menu function to get string response
+  if response is "0":
+    go to delStudents - ref to students
+    set keepGoing to false
+  if response is "1":
+    go to allStudentNames - ref to students
+  if response is "2"
+    go to printStudents - ref to students
+  if response is "3":
+    go to findStudent - ref to students
+  if any other number:
+    prompt user to try again with a number between 0-3
+return 0
+```
+
+## std::string menu()
+```
+create a string variable named userChoice
+prompt user to choose whether to quit (0), print all student names (1), print all student data (2),
+or find a student (3)
+record user's input into userChoice
+return userChoice
+```
+
+## void loadStudents(std::vector<Student*>&)
+```
+create ifstream
+create stringstream named ss
+create a string for currentLine
+open students.csv to read line into currentLine
+
+while lines can still be read into currentLine:
+  clean stringstream
+  put the currentLine into stringstream
+  create a new student on heap
+  initialize student w/ currentLine
+  put that student to the back of the student vector
+close the students.csv file
+```
+
+## void printStudents(std::vector<Student*>&)
+```
+for each student in the Student vector:
+  call Student::printStudent()
+```
+
+## void allStudentNames(std::vector<Student*>&)
+```
+for each student in the Student vector:
+  call Student::getLastFirst()
+```
+
+## void findStudent(std::vector<Student*>&)
+```
+ask the user to input a last name
+put user's input into a string named userInput
+for each student in the Student vector:
+  run string.find(userInput) for the Student's last name
+  put that result into a variable named result
+  if the result did not return std::string::npos
+    call Student::printStudent()
+```
+
+## void delStudents(std::vector<Student*>&)
+```
+for each student in the Student vector:
+  delete Student()
 ```
