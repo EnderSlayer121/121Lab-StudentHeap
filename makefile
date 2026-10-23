@@ -15,3 +15,5 @@ clean:
 	rm out
 debug: out
 	gdb out
+val: out
+	valgrind --leak-check=full -s ./out
