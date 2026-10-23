@@ -7,9 +7,9 @@ classDiagram
         # string studentString
         # string lastName
         # string firstName
-        # Date* dob
-        # Date* expectedGrad
-        # Address* address
+        # Date* dob on heap
+        # Date* expectedGrad on heap
+        # Address* address on heap
         # int creditHours
         + Student()
         + ~Student()
@@ -151,6 +151,7 @@ while keepGoing:
     go to findStudent - ref to students
   if any other number:
     prompt user to try again with a number between 0-3
+return 0
 ```
 
 ## std::string menu()
@@ -169,26 +170,40 @@ create stringstream named ss
 create a string for currentLine
 open students.csv to read line into currentLine
 
-while lines can still be read into currentLine
-  new Student()
+while lines can still be read into currentLine:
+  clean stringstream
+  put the currentLine into stringstream
+  create a new student on heap
+  initialize student w/ currentLine
+  put that student to the back of the student vector
+close the students.csv file
 ```
 
 ## void printStudents(std::vector<Student*>&)
 ```
-
+for each student in the Student vector:
+  call Student::printStudent()
 ```
 
 ## void allStudentNames(std::vector<Student*>&)
 ```
-
+for each student in the Student vector:
+  call Student::getLastFirst()
 ```
 
 ## void findStudent(std::vector<Student*>&)
 ```
-
+ask the user to input a last name
+put user's input into a string named userInput
+for each student in the Student vector:
+  run string.find(userInput) for the Student's last name
+  put that result into a variable named result
+  if the result did not return std::string::npos
+    call Student::printStudent()
 ```
 
 ## void delStudents(std::vector<Student*>&)
 ```
-
+for each student in the Student vector:
+  delete Student()
 ```
